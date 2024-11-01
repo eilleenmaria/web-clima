@@ -1,7 +1,14 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-
+/**
+ * Componente Header que representa la barra de navegación de la aplicación.
+ *
+ * Este componente contiene el logo de la aplicación y un enlace a la página principal.
+ * Se utiliza para proporcionar navegación a los usuarios en la aplicación.
+ *
+ * @returns {JSX.Element} Elemento JSX que representa el encabezado de la aplicación.
+ */
 const Header = () => {
   return (
     <nav
