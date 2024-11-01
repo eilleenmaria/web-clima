@@ -69,8 +69,10 @@ const ContainerWeather = () => {
     };     
     
     /**
-     * Cierra el mensaje de error.
-     */
+   * Cierra el mensaje de error.
+   *
+   * @returns {void}
+   */
   const closeError = () => setError("");
 
     /**
