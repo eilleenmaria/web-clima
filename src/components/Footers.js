@@ -1,5 +1,10 @@
 import React from 'react'
-
+/**
+ * Componente Footer que muestra enlaces a las redes sociales.
+ *
+ * @component
+ * @returns {JSX.Element} El componente footer que contiene enlaces de redes sociales.
+ */
 const Footers = () => {
   return (  
 <footer
