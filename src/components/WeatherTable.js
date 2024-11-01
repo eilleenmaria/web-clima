@@ -1,5 +1,6 @@
 import React from 'react';
 import Spinner from './Spinner';
+import background from '../assets/img/lluvia.jpg';
 
 const WeatherTable = ({loadingData, showData, weather, forecast}) => {
 
@@ -162,7 +163,8 @@ const WeatherTable = ({loadingData, showData, weather, forecast}) => {
               </div> 
            
            ):(
-            <h2>No ha ingresado datos</h2>
+            <div className='bg-cover bg-no-repeat' 
+            style={{ backgroundImage: `url(${background})`, height:'400px' }}></div>
            )
         } 
      </div>
