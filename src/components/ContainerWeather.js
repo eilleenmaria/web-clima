@@ -25,6 +25,7 @@ const ContainerWeather = () => {
     const [location, setLocation] = useState("");
     const [error, setError] = useState(""); 
     
+    
     const getLocation = async(loc) => {
         setLoading(true);
         setLocation(loc);
@@ -57,9 +58,15 @@ const ContainerWeather = () => {
     // Función para cerrar el mensaje de error
   const closeError = () => setError("");
 
+  const clearData = () => {
+    setWeather([]);
+    setForecast([]);
+    setShow(false);
+};
+
   return (
     <React.Fragment>
-        <FormSearchs newLocation = {getLocation}/>
+        <FormSearchs newLocation = {getLocation} onClear={clearData}/>
 
         {/* Renderiza el mensaje de error si existe */}
       {error && (

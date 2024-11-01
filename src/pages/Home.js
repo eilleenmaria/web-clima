@@ -1,5 +1,5 @@
 import React from 'react';
-import background from './../assets/img/lluvia.jpg';
+
 import ContainerWeather from '../components/ContainerWeather';
 
 const Home = () => {

@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
     
-const FormSearchs = ({newLocation}) => {
+const FormSearchs = ({newLocation, onClear}) => {
   
     const[city, setCity] = useState("");
     const [error, setError] = useState("");
+   
+    
     
 const onSubmit = (evento)=>{
-  evento.preventDefault();
-  console.log({city});
+  evento.preventDefault(); 
   if (!city) {
     setError("No haz ingresado datos. Lo sentimos, intenta nuevamente.");
     return;
@@ -17,6 +18,14 @@ setError("");
 }
  // Función para cerrar el mensaje de error
  const closeError = () => setError("");
+
+ // Función para limpiar el campo de entrada y el mensaje de error
+ const handleClear = () => {  
+  setCity("");
+  setError("");
+  onClear(); 
+};
+
   return (
     <div className="w-full  max-w-lg min-w-[200px] p-8">
             <form onSubmit={onSubmit}>
@@ -28,6 +37,7 @@ setError("");
                 <input
                 className="w-full bg-transparent font-bold placeholder:text-gray-50 text-gray-50 text-sm border border-gray-50 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-gray-50 hover:border-gray-50 shadow-sm focus:shadow"
                 placeholder="Ingresa una ciudad..." 
+                value={city}
                 onChange={(event)=>setCity(event.target.value)}
                 />
                 
@@ -36,6 +46,13 @@ setError("");
                 type="submit"
                 >
                 Buscar
+                </button> 
+                <button
+                className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                type="button"
+                onClick={handleClear}
+                >
+                Limpiar
                 </button> 
             </div>
             </form>
