@@ -1,11 +1,22 @@
 import React, {useState} from 'react'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 import FormSearchs from './FormSearchs';
 import WeatherTable from './WeatherTable';
 
+// Configura el ícono del marcador para Leaflet
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
+
 const ContainerWeather = () => {
-    let urlWeather = "https://api.openweathermap.org/data/2.5/weather?&appid=8463844bc7b8b6a16c856a476d162368&lang=es";
-    let urlCity = "&q=";
-    let urlForecast = "https://api.openweathermap.org/data/2.5/forecast?&appid=8463844bc7b8b6a16c856a476d162368&lang=es";
+    // let urlWeather = "https://api.openweathermap.org/data/2.5/weather?&appid=8463844bc7b8b6a16c856a476d162368&lang=es";
+    // let urlCity = "&q=";
+    // let urlForecast = "https://api.openweathermap.org/data/2.5/forecast?&appid=8463844bc7b8b6a16c856a476d162368&lang=es";
     
     const [weather, setWeather] = useState([]);
     const [forecast, setForecast] = useState([]);
@@ -18,16 +29,19 @@ const ContainerWeather = () => {
         setLoading(true);
         setLocation(loc);
         setError("");
-        urlWeather = urlWeather + urlCity + loc;
-        urlForecast = urlForecast + urlCity + loc;        
+        // Definir las URLs dentro de la función para reiniciar en cada llamada
+        const urlWeather = `https://api.openweathermap.org/data/2.5/weather?&appid=8463844bc7b8b6a16c856a476d162368&lang=es&q=${loc}`;
+        const urlForecast = `https://api.openweathermap.org/data/2.5/forecast?&appid=8463844bc7b8b6a16c856a476d162368&lang=es&q=${loc}`;
+
+             
 
     try {
-      const weatherResponse = await fetch(urlWeather + urlCity + loc);
+      const weatherResponse = await fetch(urlWeather);
       if (!weatherResponse.ok) throw new Error('Ciudad no encontrada');
       const weatherData = await weatherResponse.json();
       setWeather(weatherData);
 
-      const forecastResponse = await fetch(urlForecast + urlCity + loc);
+      const forecastResponse = await fetch(urlForecast );
       if (!forecastResponse.ok) throw new Error('Se presento un error en la respuesta');
       const forecastData = await forecastResponse.json();
       setForecast(forecastData);
@@ -73,6 +87,26 @@ const ContainerWeather = () => {
          loadingData = {loading}
          weather = {weather}
          forecast = {forecast}/>
+
+         {/* Renderiza el mapa si se ha cargado el clima con coordenadas */}
+         {show && weather && weather.coord && (
+                <MapContainer
+                    key={`${weather.coord.lat}-${weather.coord.lon}`} // Clave para forzar re-renderizado
+                    center={[weather.coord.lat, weather.coord.lon]}
+                    zoom={13}
+                    style={{ height: "400px", width: "100%", marginTop: "20px" }}
+                >
+                    <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    />
+                    <Marker position={[weather.coord.lat, weather.coord.lon]}>
+                        <Popup>
+                            {weather.name} <br /> Temperatura: {weather.main.temp}°C
+                        </Popup>
+                    </Marker>
+                </MapContainer>
+            )}
     </React.Fragment>
   )
 }
