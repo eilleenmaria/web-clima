@@ -61,7 +61,8 @@ const WeatherTable = ({loadingData, showData, weather, forecast}) => {
                 <span className='text-bold'>{weather.name}</span>
                 <span>{date}</span>
               </div>
-              <table className="min-w-full border divide-y divide-gray-200">
+              <div className='overflow-x-auto'>
+              <table className="min-w-full border divide-y divide-gray-200 ">
                 <thead className="bg-transparent">
                   <tr>
                     <th
@@ -174,8 +175,9 @@ const WeatherTable = ({loadingData, showData, weather, forecast}) => {
                   </tr>
                   
                 </tbody>
-            </table>
-              </div> 
+              </table>
+              </div>
+            </div> 
            
            ):(
             <div className='bg-cover bg-no-repeat' 
