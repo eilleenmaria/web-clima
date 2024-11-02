@@ -1,14 +1,16 @@
 {
-    "source": {
-      "include": ["src"],
-      "exclude": ["node_modules"],
-      "includePattern": ".+\\.js$",
-      "excludePattern": "(node_modules/|docs)"
-    },
-    "opts": {
-      "destination": "./docs",
-      "recurse": true,
-      "readme": "./README.md"
-    }
+  "source": {
+    "include": ["src"], 
+    "includePattern": ".+\\.jsx?$" 
+  },
+  "plugins": ["plugins/markdown"], 
+  "opts": {
+    "recurse": true,
+    "destination": "docs"
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
   }
+}
   

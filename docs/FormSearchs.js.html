@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: FormSearchs.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: FormSearchs.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, {useState} from 'react'
+
+/**
+ * Componente de formulario para buscar el clima de una ciudad.
+ *
+ * @component
+ * @param {Object} props - Props del componente.
+ * @param {function} props.newLocation - Función que se llama al enviar el formulario con el nombre de la ciudad.
+ * @param {function} props.onClear - Función que se llama al limpiar el formulario.
+ * @example
+ * return (
+ *   &lt;FormSearchs newLocation={newLocationHandler} onClear={clearHandler} />
+ * )
+ */
+    
+const FormSearchs = ({newLocation, onClear}) => {
+  
+  const[city, setCity] = useState("");
+  const [error, setError] = useState(""); 
+  /**
+   * Maneja el envío del formulario.
+   *
+   * @param {Object} evento - El evento de envío del formulario.
+   * @returns {void}
+   */   
+    
+const onSubmit = (evento)=>{
+  evento.preventDefault(); 
+  if (!city) {
+    setError("No haz ingresado datos. Lo sentimos, intenta nuevamente.");
+    return;
+  }
+  setError("");
+  newLocation(city); // Llama a la función para buscar el clima de la ciudad ingresada.
+}
+/**
+   * Cierra el mensaje de error.
+   *
+   * @returns {void}
+   */
+  const closeError = () => setError("");
+
+ /**
+   * Función para limpiar el campo de entrada y el mensaje de error.
+   *
+   * @returns {void}
+   */
+  const handleClear = () => {  
+    setCity("");
+    setError("");
+    onClear(); // Llama a la función para limpiar los datos en el componente padre.
+  };
+
+  return (
+    &lt;div className="w-full  max-w-lg min-w-[200px] p-8">
+            &lt;form onSubmit={onSubmit}>
+            &lt;div className="relative flex items-center">
+                &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600">
+                &lt;path fillRule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clipRule="evenodd" />
+                &lt;/svg>
+            
+                &lt;input
+                className="w-full bg-transparent font-bold placeholder:text-gray-50 text-gray-50 text-sm border border-gray-50 rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-gray-50 hover:border-gray-50 shadow-sm focus:shadow"
+                placeholder="Ingresa una ciudad..." 
+                value={city}
+                onChange={(event)=>setCity(event.target.value)}
+                />
+                
+                &lt;button
+                className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                type="submit"
+                >
+                Buscar
+                &lt;/button> 
+                &lt;button
+                className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+                type="button"
+                onClick={handleClear}
+                >
+                Limpiar
+                &lt;/button> 
+            &lt;/div>
+            &lt;/form>
+
+            {/* Renderiza el mensaje de error si existe */}
+      {error &amp;&amp; (
+        &lt;div
+          className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4"
+          role="alert">
+          &lt;strong className="font-bold">¡Error!&lt;/strong>
+          &lt;span className="block sm:inline">{error}&lt;/span>
+          &lt;span className="absolute top-0 bottom-0 right-0 px-4 py-3"  onClick={closeError}>
+            &lt;svg
+              className="fill-current h-6 w-6 text-red-500"
+              role="button"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20">
+              &lt;title>Close&lt;/title>
+              &lt;path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+            &lt;/svg>
+          &lt;/span>
+        &lt;/div>
+      )};
+    &lt;/div>
+  )
+
+
+
+
+
+}
+
+export default FormSearchs
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ContainerWeather">ContainerWeather</a></li><li><a href="global.html#Footers">Footers</a></li><li><a href="global.html#FormSearchs">FormSearchs</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Spinner">Spinner</a></li><li><a href="global.html#WeatherTable">WeatherTable</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Nov 01 2024 18:11:12 GMT-0500 (hora estándar de Colombia)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
