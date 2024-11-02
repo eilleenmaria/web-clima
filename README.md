@@ -68,3 +68,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## Agradecimientos
+
+Este proyecto utiliza las siguientes librerías de terceros:
+- [Leaflet](https://leafletjs.com/) - Biblioteca de mapas interactivos de código abierto.
+- [React Leaflet](https://react-leaflet.js.org/) - Componentes de React para usar Leaflet.
+- [Tailwind CSS](https://tailwindcss.com/) - Framework de CSS para diseño web.
