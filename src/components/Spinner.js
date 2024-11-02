@@ -1,5 +1,14 @@
 import React from 'react'
 
+/**
+ * Componente que muestra un spinner de carga.
+ *
+ * Este componente es utilizado para indicar que una operación de carga está en progreso. 
+ * Se representa mediante un SVG animado que gira mientras se espera la finalización de la tarea.
+ *
+ * @returns {JSX.Element} Elemento JSX que representa el spinner de carga.
+ */
+
 const Spinner = () => {
   return (
     <div className="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">

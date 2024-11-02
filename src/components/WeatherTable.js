@@ -2,8 +2,20 @@ import React from 'react';
 import Spinner from './Spinner';
 import background from '../assets/img/lluvia.jpg';
 
+/**
+ * Componente que muestra la tabla del clima actual y el pronóstico.
+ *
+ * @param {Object} props - Las propiedades del componente.
+ * @param {boolean} props.loadingData - Indica si los datos están cargando.
+ * @param {boolean} props.showData - Indica si se deben mostrar los datos del clima.
+ * @param {Object} props.weather - Objeto con los datos del clima actual.
+ * @param {Object} props.forecast - Objeto con los datos del pronóstico del clima.
+ * @returns {JSX.Element} Elemento JSX que representa la tabla del clima.
+ */
+
 const WeatherTable = ({loadingData, showData, weather, forecast}) => {
 
+  // Obtiene la fecha actual para mostrar en el componente
   let today = new Date();
   let day = today.getDate();
   let month = today.getMonth() + 1;
@@ -20,10 +32,12 @@ const WeatherTable = ({loadingData, showData, weather, forecast}) => {
   let forecast_date_6h = "";
   let forecast_date_9h = ";";
 
-
+  // Si los datos están cargando, se muestra un spinner
   if(loadingData){
     return <Spinner/>
   }
+
+  // Si se deben mostrar los datos, se procesan
   if(showData){
     url = "http://openweathermap.org/img/w/";
     iconUrl = url + weather.weather[0].icon + ".png";
@@ -32,6 +46,7 @@ const WeatherTable = ({loadingData, showData, weather, forecast}) => {
     iconUrl_6h = url + forecast.list[2].weather[0].icon + ".png";
     iconUrl_9h = url + forecast.list[3].weather[0].icon + ".png";
 
+    // Formatea las fechas del pronóstico
     forecast_date_3h = forecast.list[1].dt_txt.substring(8, 10) + '/' + forecast.list[1].dt_txt.substring(5, 7) + '/' + forecast.list[1].dt_txt.substring(0, 4) + ' ' +  forecast.list[1].dt_txt.substring(11, 13);
     forecast_date_6h = forecast.list[2].dt_txt.substring(8, 10) + '/' + forecast.list[2].dt_txt.substring(5, 7) + '/' + forecast.list[2].dt_txt.substring(0, 4) + ' ' +  forecast.list[2].dt_txt.substring(11, 13);
     forecast_date_9h = forecast.list[3].dt_txt.substring(8, 10) + '/' + forecast.list[3].dt_txt.substring(5, 7) + '/' + forecast.list[3].dt_txt.substring(0, 4) + ' ' +  forecast.list[3].dt_txt.substring(11, 13);
