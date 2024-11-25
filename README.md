@@ -2,8 +2,7 @@
 
 Application built with React, tailwind for css, Leaflet for interactives maps and OpenWeatherMap api.
 <br>
-Deployed in Firebase     [Link web-clima](https://web-clima-bc527.web.app/){:target="_blank"} 
-
+Deployed in Firebase    [Link web-clima](https://web-clima-bc527.web.app/){target="_blank"}
 
 <br>
 <img src="src\assets\img\webClima1.png" width="800">
