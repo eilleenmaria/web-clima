@@ -3,15 +3,15 @@
 Application built with React, tailwind for css, Leaflet for interactives maps and OpenWeatherMap api.
 
 <br>
-<img src="web-clima\src\assets\img\webClima1.png" width="800">
+<img src="src\assets\img\webClima1.png" width="800">
 <br>
 
 <br>
-<img src="web-clima\src\assets\img\webClima2.png" width="800">
+<img src="src\assets\img\webClima2.png" width="800">
 <br>
 
 <br>
-<img src="web-clima\src\assets\img\webClima3.png" width="800">
+<img src="src\assets\img\webClima3.png" width="800">
 <br>
 
 
