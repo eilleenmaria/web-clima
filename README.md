@@ -2,6 +2,11 @@
 
 Application built with React, tailwind for css, Leaflet for interactives maps and OpenWeatherMap api.
 
+<br>
+
+<img src="src\assets\img\projects\portfolio3d.png" width="800">
+<br>
+
 
 
 ## Acknowledgments
