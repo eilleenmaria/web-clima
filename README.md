@@ -1,6 +1,8 @@
 # Weather forecast application
 
 Application built with React, tailwind for css, Leaflet for interactives maps and OpenWeatherMap api.
+Deployed in Firebase  [Link web-clima](https://web-clima-bc527.web.app/) 
+
 
 <br>
 <img src="src\assets\img\webClima1.png" width="800">
