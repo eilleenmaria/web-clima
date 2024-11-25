@@ -1,6 +1,15 @@
-# Getting Started with Create React App
+# Weather forecast application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Application built with React, tailwind for css, Leaflet for interactives maps and OpenWeatherMap api.
+
+
+
+## Acknowledgments
+
+This project uses the following third-party libraries:
+- [Leaflet](https://leafletjs.com/) - Biblioteca de mapas interactivos de código abierto.
+- [React Leaflet](https://react-leaflet.js.org/) - Componentes de React para usar Leaflet.
+- [Tailwind CSS](https://tailwindcss.com/) - Framework de CSS para diseño web.
 
 ## Available Scripts
 
@@ -70,9 +79,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-## Agradecimientos
-
-Este proyecto utiliza las siguientes librerías de terceros:
-- [Leaflet](https://leafletjs.com/) - Biblioteca de mapas interactivos de código abierto.
-- [React Leaflet](https://react-leaflet.js.org/) - Componentes de React para usar Leaflet.
-- [Tailwind CSS](https://tailwindcss.com/) - Framework de CSS para diseño web.
