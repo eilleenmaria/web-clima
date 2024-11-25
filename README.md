@@ -4,8 +4,11 @@ Application built with React, tailwind for css, Leaflet for interactives maps an
 <br>
 Deployed in Firebase   
 <br>
-<a href="https://web-clima-bc527.web.app/" target="_blank">Link web-clima</a>
+Visit  [web-clima](https://web-clima-bc527.web.app/) (Right-click and select "Open link in new tab").
+
 <br>
+<br>
+
 <img src="src\assets\img\webClima1.png" width="800">
 <br>
 
